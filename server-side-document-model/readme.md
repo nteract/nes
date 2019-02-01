@@ -1,3 +1,3 @@
 # Server Side Documents
 
-_Putting this in as a placeholder for folks to get started putting in their pre-reads_
+[Realtime Design Document (includes server side docs)](https://docs.google.com/document/d/1zQeESzUZzcyCWauJ5noOpkGkz8gStjqi3XXYyc474M4/edit?usp=sharing)
