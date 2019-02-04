@@ -47,10 +47,10 @@ planned to replace [papermill](https://papermill.readthedocs.io)'s existing
 
 ### Install it
 
-From the command line:
+From the command line (beta name temporary):
 
 ``` {.sourceCode .bash}
-python3 -m pip install scrapbook
+python3 -m pip install scrapbook-beta
 ```
 
 ### Learn more
