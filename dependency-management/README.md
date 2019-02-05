@@ -45,48 +45,49 @@ TODO
 
 Here’s three stories that capture many of the dependency problems:
 
-1. I have a notebook and I want to **share it** with others and give them a
-   way to **replicate it** for their own use. (Related, I want to open my
-   notebook on a **different notebook server** than where I was originally
-   working with it.) 2. I have a notebook and want to **run it headless** in some
-   service that supports that (using papermill or similar). 3. I have a notebook
-   with an environment and I want to **clone that environment** so I can use it
-   with a new notebook or some other program (like if I export the notebook to
-   .py, for instance).
+- 1. I have a notebook and I want to **share it** with others and give them a
+     way to **replicate it** for their own use. (Related, I want to open my
+     notebook on a **different notebook server** than where I was originally
+     working with it.)
+- 2. I have a notebook and want to **run it headless** in some
+     service that supports that (using papermill or similar).
+- 3. I have a notebook
+     with an environment and I want to **clone that environment** so I can use it
+     with a new notebook or some other program (like if I export the notebook to
+     .py, for instance).
 
 These stories have good grounding in where users experience friction. If we
 look closer at the root causes for friction in these cases we can see a
 variety of points of friction that make solving these stories difficult.
 
-- Installing language dependencies to the correct environment. It can be hard
-- to install to the right python site-packages when you have several
-- virtualenvs or conda installs. Installing OS packages required for library
-- dependencies. This is more challenging and perhaps not something we should
-- solve at first. In general it almost always requires human intervention the
-- first time to do correctly and understand the constraints under which is
-- should work. Installing packages before launching the kernel's python
-- process, or perhaps restarting the kernel after installation. Some packages
-- are not importable, or damage neighboring imported packages, if installed
-- after the active process launched. This issue plagues !pip install pattern
-- for a few scientific computing packages in particular. Runtime installation
-- (e.g. `pip install foo`) can be tedious for users to bundle code into
-- dependencies in shared locations, can fail to install when in conflict with
-- the notebook environment, and can pose licensing or security concerns. Pre-
-- built dependency artifacts can be tedious for a user to define, test, and
-- deploy. Requires more advanced understanding of tooling and surrounding
-- ecosystem for a notebook server to do right. Applications calling a notebook
-- should be able to choose how to respect dependency assignments. For example,
-- a scheduled notebook may have an older version of the package and may want
-- to choose whether to upgrade it or leave it pinned back to meet the
-- requirement specification based on success of failure of other tasks. If the
-- install is always forcibly run by the notebook this can't be controlled, and
-- the notebook writer may install packages with known stability or security
-- issues by including the -U option always. Service maintainers may want to
-- inject additional dependencies or rules about dependencies without modifying
-- user notebooks. There may be a base requirements file that's pulled in
-- statically or dynamically which needs to be processed before or after
-- notebook dependencies are met. Hardware and resource dependency indicators
-- that need to be matched before launch.
+- Installing language dependencies to the correct environment. It can be hard to install to the right python site-packages when you have several virtualenvs or conda installs.
+- Installing OS packages required for library
+  dependencies. This is more challenging and perhaps not something we should
+  solve at first. In general it almost always requires human intervention the
+  first time to do correctly and understand the constraints under which is
+  should work.
+- Installing packages before launching the kernel's python
+  process, or perhaps restarting the kernel after installation. Some packages
+  are not importable, or damage neighboring imported packages, if installed
+  after the active process launched. This issue plagues !pip install pattern
+  for a few scientific computing packages in particular.
+- Runtime installation
+  (e.g. `pip install foo`) can be tedious for users to bundle code into
+  dependencies in shared locations, can fail to install when in conflict with
+  the notebook environment, and can pose licensing or security concerns.
+- Pre-built dependency artifacts can be tedious for a user to define, test, and deploy. Requires more advanced understanding of tooling and surrounding
+  ecosystem for a notebook server to do right.
+- Applications calling a notebook
+  should be able to choose how to respect dependency assignments. For example,
+  a scheduled notebook may have an older version of the package and may want
+  to choose whether to upgrade it or leave it pinned back to meet the requirement specification based on success of failure of other tasks. If the
+  install is always forcibly run by the notebook this can't be controlled, and the notebook writer may install packages with known stability or security issues by including the -U option always.
+- Service maintainers may want to
+  inject additional dependencies or rules about dependencies without modifying
+  user notebooks. There may be a base requirements file that's pulled in
+  statically or dynamically which needs to be processed before or after
+  notebook dependencies are met.
+- Hardware and resource dependency indicators that need to be matched before launch.
 
 As you can see there’s a lot of nuanced points of friction. Luckily many of
 these have been solved in part for different languages or ecosystems and we
@@ -101,43 +102,29 @@ solutions we’ve seen in real production systems:
 
 - Single large image with managed containers.
 
-- - Most dependencies for an organization can met this way but it comes with a
-- - high price tag and never completely solves the problem.
+- Most dependencies for an organization can met this way but it comes with a
+  high price tag and never completely solves the problem.
 
 - Requirements list for apt-get / python / etc installed into dev environment
-- automatically on boot
+  automatically on boot
 
-- - Only helps for very controlled environments with fixed deployment paths.
-- - Notebooks tend to not run outside of those environments.
-
+- Only helps for very controlled environments with fixed deployment paths.
+  Notebooks tend to not run outside of those environments.
 - pip[3] install package-you-hope-is-compatible repeated at the top. This can
-- now be done a _little_ better with %pip or %conda which will solve selecting
-- the correct installer for the calling kernel.
+  now be done a _little_ better with %pip or %conda which will solve selecting the correct installer for the calling kernel.
+- The %pip and %conda magics that got recently added for python which help a
+  little when in multi-python environments
 
-- - The %pip and %conda magics that got recently added for python which help a
-- - little when in multi-python environments
+- Custom image or dependency tar managed by the notebook writer or her team (this has a lot of maintenance and security issues over time)
 
-- Custom image or dependency tar managed by the notebook writer or her team
-- (this has a lot of maintenance and security issues over time)
-
-- - [repo2docker](https://github.com/jupyter/repo2docker) gives a fundamental
-- - [that could be made to have a smart template for patterns we adopt. In
-- - [theory many of the topics above can be partially solved with a JIT docker
-- - [image. This has latency and management concerns in some situations but
-- - [it's a reasonable trade-off for many situations.
+  - [repo2docker](https://github.com/jupyter/repo2docker) gives a fundamental that could be made to have a smart template for patterns we adopt. In theory many of the topics above can be partially solved with a JIT docker image. This has latency and management concerns in some situations but it's a reasonable trade-off for many situations.
 
 - Nested Docker Containers
 
-- - Multiple build systems within the same company mean there are customers
-- - are managing their dependencies already as docker containers making it
-- - challenging for the Notebooks service to inject other dependencies needed
-- - for the platform. Uber has internally developed a nested container model
-- - to address these use cases.
+  - Multiple build systems within the same company mean there are customers are managing their dependencies already as docker containers making it challenging for the Notebooks service to inject other dependencies needed for the platform. Uber has internally developed a nested container model to address these use cases.
 
 - System scaffolding within the parent ecosystem
-
-- - Managed systems can provide a framework to control various dependencies
-- - and opinions. Has similar trade-offs to managed images.
+  - Managed systems can provide a framework to control various dependencies and opinions. Has similar trade-offs to managed images.
 
 ## Potential Solutions
 
