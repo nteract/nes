@@ -45,13 +45,13 @@ TODO
 
 Here’s three stories that capture many of the dependency problems:
 
-- 1. I have a notebook and I want to **share it** with others and give them a
+1. I have a notebook and I want to **share it** with others and give them a
      way to **replicate it** for their own use. (Related, I want to open my
      notebook on a **different notebook server** than where I was originally
      working with it.)
-- 2. I have a notebook and want to **run it headless** in some
+2. I have a notebook and want to **run it headless** in some
      service that supports that (using papermill or similar).
-- 3. I have a notebook
+3. I have a notebook
      with an environment and I want to **clone that environment** so I can use it
      with a new notebook or some other program (like if I export the notebook to
      .py, for instance).
@@ -117,14 +117,14 @@ solutions we’ve seen in real production systems:
 
 - Custom image or dependency tar managed by the notebook writer or her team (this has a lot of maintenance and security issues over time)
 
-  - [repo2docker](https://github.com/jupyter/repo2docker) gives a fundamental that could be made to have a smart template for patterns we adopt. In theory many of the topics above can be partially solved with a JIT docker image. This has latency and management concerns in some situations but it's a reasonable trade-off for many situations.
+- [repo2docker](https://github.com/jupyter/repo2docker) gives a fundamental that could be made to have a smart template for patterns we adopt. In theory many of the topics above can be partially solved with a JIT docker image. This has latency and management concerns in some situations but it's a reasonable trade-off for many situations.
 
 - Nested Docker Containers
 
-  - Multiple build systems within the same company mean there are customers are managing their dependencies already as docker containers making it challenging for the Notebooks service to inject other dependencies needed for the platform. Uber has internally developed a nested container model to address these use cases.
+- Multiple build systems within the same company mean there are customers are managing their dependencies already as docker containers making it challenging for the Notebooks service to inject other dependencies needed for the platform. Uber has internally developed a nested container model to address these use cases.
 
 - System scaffolding within the parent ecosystem
-  - Managed systems can provide a framework to control various dependencies and opinions. Has similar trade-offs to managed images.
+- Managed systems can provide a framework to control various dependencies and opinions. Has similar trade-offs to managed images.
 
 ## Potential Solutions
 
@@ -137,12 +137,12 @@ locations fall into a few categories:
 
 1. Share a notebook as-is
 
-2. 1. Inside the notebook (ipynb file) as metadata. 2. Inside the notebook
+2. a) Inside the notebook (ipynb file) as metadata. b) Inside the notebook
       as a new cell type or magic
 
 3. Share a notebook environment
 
-4. 1. Inside a companion file to the ipynb file 2. In group of files (like
+4. a) Inside a companion file to the ipynb file b) In group of files (like
       a github repo) that travels together.
 
 Generally option 1a) and 2b) seem to have the best merits for providing
