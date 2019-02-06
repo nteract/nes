@@ -184,3 +184,19 @@ be applied to these locations.
 - kernels. We have %pip and %conda now. It would follow that %sbt and %packrat
 - could easily follow. This doesn't address all of the concerns above, but
 - it's a good step in the right direction.
+
+## Appendix
+
+### Terminology
+
+- kernel
+- kernelspec
+- repo2docker
+- pip
+- conda
+- miniconda
+
+### Resources
+
+- kernel technical information: [jupyter_client documentation](https://jupyter-client.readthedocs.io)
+- [example Echo Kernel development](https://jupyter-client.readthedocs.io/en/stable/wrapperkernels.html#example)
