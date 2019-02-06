@@ -47,7 +47,7 @@ SoS notebook supports both interactive mode and workflow mode (headless executio
 Code cell structure:
 
  
-
+```
 {
 
   "cell_type": "code",
@@ -89,7 +89,7 @@ Code cell structure:
   ]
 
 }
-
+```
  
 
 Metadata field in a cell is used to store the kernel that was used to execute the code. In interactive mode, SoS relies on front-end interaction to switch language. Specifically, the frontend Javascript sends a “language-switch” message to the backend in two cases:
