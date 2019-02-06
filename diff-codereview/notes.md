@@ -61,4 +61,5 @@
 * Explore how phabricator could integrate with nbdime?
   * Went through the source code
   * Looks like we could React component into the UI
+* Think about read-only comments, resolving, seeing older version comments
 
