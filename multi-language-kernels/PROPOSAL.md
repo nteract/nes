@@ -21,6 +21,39 @@
 2. Notebooks backed by the meta-kernel won't include the full language_info.
 3. Add `runtime` and `langauge` to metadata in each cell.
 
+```
+{
+	"metadata": {
+		name: "meta_kernel",
+		runtime_info: [
+			{
+				"name": "Python3-Conda",
+				"language_info": {...},
+			},
+			{
+				"name": "Scala-Local",
+				"language_info": {...}
+			}
+		]
+	},
+	"cells": [
+		{
+			"cellId" : "ABCXYZ",
+			"metadata" : {
+				"runtime": "Python3-Conda",
+				"language": "python3"
+			}
+		},
+		{
+			"cellId" : "ABCXYZ2",
+			"metadata" : {
+				"runtime": "Scala-Local"
+				"language": "scala"
+			}
+		}
+	]
+}
+```
 ### Next Steps
 
 1. Create API for notebook and metakernel.
