@@ -37,7 +37,7 @@
     2. Doesn't use Git versioning
 4. **BOOKSTORE**
     1. Issue #58 on the Bookstore repo (TODO: Link to the JupyterLab repo)
-5. **REVIEWNB  - **
+5. **REVIEWNB**
     1. Support for GitHub - Its a GitHub plugin
     3. Roadmap - https://github.com/ReviewNB/support/issues?q=is%3Aopen+is%3Aissue+label%3A%22Feature+Request%22+sort%3Acreated-asc
     4. Source code: NOT Open Source
