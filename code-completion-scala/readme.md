@@ -30,12 +30,11 @@ One caveat about the `type` is that frontends are expected to use the types to d
 }
 ```
 
-
 Questions raised:
 
 * For cursor position, would the start ever be different between matches?
 
-One 
+While `pd.Da` will complete with `DataFrame`, `DateOffset`, and `DatetimeIndex`, they all start with the prefix of `Da`. In some cases though you might replace a whole token. One example of this is replacing `\phi` in IPython and IJulia with `ϕ`. 
 
 
 
