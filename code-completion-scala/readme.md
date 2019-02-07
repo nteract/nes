@@ -2,6 +2,7 @@ We'd like to build on top of the experimental type support that IPython has star
 
 * Original motivating issue: https://github.com/jupyter/jupyter_client/issues/51
 * Matthias' initial ipykernel support https://github.com/ipython/ipykernel/pull/222
+* [`complete_request` and `complete_reply` in the proper jupyter protocol](https://jupyter-client.readthedocs.io/en/stable/messaging.html#completion)
 
 
 Currently `nteract` and `jupyterlab` support a field in `metadata` for a `complete_reply` called `_jupyter_types_experimental` with the following structure:
@@ -28,3 +29,14 @@ One caveat about the `type` is that frontends are expected to use the types to d
     | string; // Others are allowd
 }
 ```
+
+
+Questions raised:
+
+* For cursor position, would the start ever be different between matches?
+
+One 
+
+
+
+
