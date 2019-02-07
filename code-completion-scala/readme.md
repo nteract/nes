@@ -40,4 +40,7 @@ While `pd.Da` will complete with `DataFrame`, `DateOffset`, and `DatetimeIndex`,
 
 > Ammonite's complete returns all names and signatures? Could we return the list of signatures too?
 
+> What are the limitations of Ammonite's autocomplete?
+
+https://github.com/lihaoyi/Ammonite/issues/275
 
