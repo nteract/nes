@@ -38,9 +38,11 @@ While `pd.Da` will complete with `DataFrame`, `DateOffset`, and `DatetimeIndex`,
 
 > Could we get type info from ammonite's `complete` method?
 
-> Ammonite's complete returns all names and signatures? Could we return the list of signatures too?
+> Ammonite's complete returns all names and signatures? Could we return the list of signatures in the experimental payloads above?
 
 > What are the limitations of Ammonite's autocomplete?
 
 https://github.com/lihaoyi/Ammonite/issues/275
 
+
+> For each completion, is there a way to get information about the type (instance, method, class, primitive, etc.)?
