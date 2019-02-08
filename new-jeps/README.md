@@ -1,0 +1,1 @@
+You can find the working document for the new Jupyter Enhancement Proposal process [at this document](https://docs.google.com/document/d/16xa1DSH0lN6lY-EzyyGOzaZlcQc1ZT8HEeDc3uyrwcI/edit?usp=sharing).
