@@ -38,6 +38,39 @@ While `pd.Da` will complete with `DataFrame`, `DateOffset`, and `DatetimeIndex`,
 
 > Could we get type info from ammonite's `complete` method?
 
+No, it appears we'll need to update Ammonite's [prefixed method](https://github.com/lihaoyi/Ammonite/blob/7e088bbd9c7c1c4c3bcf714beee2263e055af2f6/amm/interp/src/main/scala/ammonite/interp/Pressy.scala#L155) to extract and return this information. [Ammonite's complete method](https://github.com/lihaoyi/Ammonite/blob/7e088bbd9c7c1c4c3bcf714beee2263e055af2f6/amm/interp/src/main/scala/ammonite/interp/Pressy.scala#L283) returns a tuple: ```(position: Int, allNames: Seq[String], signatures: Seq[String])```. Almond consumes the position and allNames fields. The **signatures**  field returned by Ammonite is empty in the following test cases.
+
+Example 1:
+```
+input:
+  Futu^
+
+output:
+  allNames=[
+  com.sun.corba.se.impl.orbutil.closure.Future
+  java.util.concurrent.Future
+  java.util.concurrent.FutureTask
+  java.util.concurrent.FutureTask$WaitNode
+  scala.collection.parallel.FutureTasks
+  scala.collection.parallel.FutureThreadPoolTasks
+  scala.concurrent.Future
+  scala.concurrent.Future$InternalCallbackExecutor
+  scala.concurrent.Future$never
+  ]
+  signatures=[]
+```
+
+Example 2:
+```
+input:
+  case class Person(name: String)
+  Pers^
+
+output:
+  allNames=[Person]
+  signatures=[]
+```
+
 > Ammonite's complete returns all names and signatures? Could we return the list of signatures in the experimental payloads above?
 
 > What are the limitations of Ammonite's autocomplete?
