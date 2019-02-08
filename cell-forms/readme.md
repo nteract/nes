@@ -11,12 +11,6 @@
 <!---- Insert UI example image here -->
 
 ```
-pip install jupyter-cell-form-dbconn
-```
-
-vs.
-
-```
 jupyter template install http://example.com/cell-forms/dbconn.json
 ```
 
