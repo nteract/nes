@@ -57,6 +57,7 @@
 * Issue with JLGit/Bookstore for a React component to render the diff
     * Example with NTeract  of re-usable components https://github.com/nteract/nteract/tree/master/packages
 * Someone from MSFT to reach-out to GitHub
+    * Promote nbdime adoption with github via community messaging: https://github.community/t5/GitHub-API-Development-and/Use-nbdime-as-diff-tool-for-Jupyter-Notebook/m-p/18725#M858
 * Integrate nbdime, nbstripout, (and bookstore in a repo?) in an example repo
 * Explore how phabricator could integrate with nbdime?
   * Went through the source code
