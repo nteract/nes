@@ -12,3 +12,7 @@ to the open source community.
 The goal of this summit is to **accelerate progress** on areas of **high importance** for
 **enterprise** use cases. We will do this by **aligning** on topics of **broad relevance**
 and by **connecting people**--including engineers, architects, and leaders--with one another. 
+
+## Agenda
+
+The [Agenda Google Doc](https://docs.google.com/document/d/16xir_gWVneLKc8UlejTRcVBPsCdyY6K3-fzxfRUcxPE/edit#heading=h.35cgmrdsia12) has more depth of topics and discussions that populates the directories in this repo.
